@@ -7,4 +7,16 @@
     <RootNamespace>FirstProject_RP.Web</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FirstProject-RP.DataLayer\FirstProject-RP.DataLayer.csproj" />
+    <ProjectReference Include="..\FirtsProject-RP.CoreLayer\FirtsProject-RP.CoreLayer.csproj" />
+  </ItemGroup>
+
 </Project>

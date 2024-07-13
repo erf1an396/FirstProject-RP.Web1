@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace FirstProject_RP.DataLayer.Entities
 {
+
+    
     public class Post
     {
         [Key]
