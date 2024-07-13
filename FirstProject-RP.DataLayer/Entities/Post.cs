@@ -24,6 +24,7 @@ namespace FirstProject_RP.DataLayer.Entities
         public string Visit {  get; set; }
 
         [Required]
+        [MaxLength(300)]
         public string Title { get; set; }
         [Required]
         public string Slug { get; set; }
