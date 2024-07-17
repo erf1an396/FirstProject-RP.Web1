@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure;
 using CodeYad_Blog.CoreLayer.Utilities;
 using FirstProject_RP.DataLayer.Context;
 using FirstProject_RP.DataLayer.Entities;
@@ -23,10 +24,13 @@ namespace FirtsProject_RP.CoreLayer.Services.Users
 
         public OperationResult RegisterUser(UserRegisterDto userRegisterDto)
         {
-            var isFullNameExist = _blogContext.Users.Any(u => u.UserName == userRegisterDto.UserName);
-            if (isFullNameExist)
-                OperationResult.Error("نام کاربری تکراری است ");
             
+
+            var isUserNameExist = _blogContext.Users.Any(u => u.UserName == userRegisterDto.UserName);
+            if (isUserNameExist)
+               return OperationResult.Error("نام کاربری تکراری است ");
+                
+
 
             var passwordHash = userRegisterDto.Password.EncodeToMd5();
             _blogContext.Users.Add(new User()
@@ -41,6 +45,16 @@ namespace FirtsProject_RP.CoreLayer.Services.Users
 
             });
             _blogContext.SaveChanges();
+            return OperationResult.Success();
+        }
+
+        public OperationResult LoginUser(UserLoginDto userLoginDto)
+        {
+            var PasswordHash = userLoginDto.Password.EncodeToMd5();
+            var isUserExist =  _blogContext.Users.Any(u =>u.UserName == userLoginDto.UserName && u.Password == PasswordHash);
+            if (!isUserExist)
+                return OperationResult.NotFound();
+
             return OperationResult.Success();
         }
     }

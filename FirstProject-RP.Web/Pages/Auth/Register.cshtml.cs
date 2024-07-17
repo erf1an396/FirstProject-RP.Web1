@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace FirstProject_RP.Web.Pages.Auth
 {
     [BindProperties]
+    [ValidateAntiForgeryToken]
     public class RegisterModel : PageModel
     {
+        
 
         #region Properties
 
@@ -44,6 +46,9 @@ namespace FirstProject_RP.Web.Pages.Auth
 
         public IActionResult OnPost()
         {
+            if (!ModelState.IsValid)
+                return Page();
+
             var result = _userService.RegisterUser(new UserRegisterDto()
             {
                 FullName = FullName,
