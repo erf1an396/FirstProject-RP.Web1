@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace FirstProject_RP.DataLayer.Entities
 {
-    public class PostComment
+    public class PostComment :BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+        
 
         public int UserId { get; set; }
 
@@ -19,10 +18,13 @@ namespace FirstProject_RP.DataLayer.Entities
         [Required]
         public string Text { get; set; }
 
+        #region Relations
+
         [ForeignKey("UserId")]
         public User User { get; set; }
 
         [ForeignKey("PostId")]
         public Post Post { get; set; }
+        #endregion
     }
 }

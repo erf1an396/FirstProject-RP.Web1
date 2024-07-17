@@ -5,9 +5,9 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject-RP.Web", "FirstProject-RP.Web\FirstProject-RP.Web.csproj", "{85B5D176-951B-4831-96EB-E6C9EEA19AAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstProject-RP.DataLayer", "FirstProject-RP.DataLayer\FirstProject-RP.DataLayer.csproj", "{AFD60039-4127-4893-A0AB-408C4BAE6062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject-RP.DataLayer", "FirstProject-RP.DataLayer\FirstProject-RP.DataLayer.csproj", "{AFD60039-4127-4893-A0AB-408C4BAE6062}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirtsProject-RP.CoreLayer", "FirtsProject-RP.CoreLayer\FirtsProject-RP.CoreLayer.csproj", "{F2D937D4-D7E6-4F2F-808D-411679DBB252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirtsProject-RP.CoreLayer", "FirtsProject-RP.CoreLayer\FirtsProject-RP.CoreLayer.csproj", "{F2D937D4-D7E6-4F2F-808D-411679DBB252}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

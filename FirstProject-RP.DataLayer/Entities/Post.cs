@@ -10,10 +10,9 @@ namespace FirstProject_RP.DataLayer.Entities
 {
 
     
-    public class Post
+    public class Post :BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+       
 
         public int UserId { get; set; }
         public int CategoryId { get; set; }
@@ -27,11 +26,14 @@ namespace FirstProject_RP.DataLayer.Entities
         [MaxLength(300)]
         public string Title { get; set; }
         [Required]
+        [MaxLength(300)]
         public string Slug { get; set; }
 
+        #region Relations
         [ForeignKey("UserId")]
         public User User { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+        #endregion
     }
 }

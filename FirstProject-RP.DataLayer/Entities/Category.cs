@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace FirstProject_RP.DataLayer.Entities
 {
-    public class Category
+    public class Category :BaseEntity
     {
-        [Key]
-        public int Id {  get; set; }
+       
         [Required]
         public string Title { get; set; }
         [Required]
@@ -20,7 +19,10 @@ namespace FirstProject_RP.DataLayer.Entities
 
         public string MetaDescription { get; set; }
 
+        #region Relations
         public ICollection<Post> Posts { get; set; }
+
+        #endregion
 
 
     }

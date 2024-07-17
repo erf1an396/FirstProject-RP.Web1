@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace FirstProject_RP.DataLayer.Entities
 {
-    public class User
+    public class User :BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+  
 
         public string FullName { get; set; }
         [Required]
@@ -18,9 +17,13 @@ namespace FirstProject_RP.DataLayer.Entities
         [Required]
         public string Password { get; set; }
 
+        #region Relations
+
         public ICollection<Post> Posts { get; set; }    
 
         public ICollection<PostComment> PostComments { get; set; }
+
+        #endregion
 
         public UserRole Role { get; set; }
 

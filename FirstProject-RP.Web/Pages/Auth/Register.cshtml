@@ -1,0 +1,31 @@
+﻿@page
+@model FirstProject_RP.Web.Pages.Auth.RegisterModel
+@{
+    Layout = "Shared/_AuthLayout";
+    ViewData["Title"] = "ثبت نام";
+    
+}
+
+<form method="post">
+    <h1>@ViewData["Title"]</h1>
+    <div>
+        <input asp-for="UserName" type="text" placeholder="نام کاربری" required="" id="username" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div>
+        <input asp-for="FullName" id="FullName" type="text" placeholder="نام و نام خانوادگی" id="username" />
+        <span asp-validation-for="FullName"></span>
+    </div>
+
+    <div>
+        <input asp-for="Password" id="Password" type="password" placeholder="کلمه عبور" required="" id="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <input type="submit" value="ثبت نام" />
+       
+        <a asp-page="Login">ورود به سایت</a>
+    </div>
+</form>
