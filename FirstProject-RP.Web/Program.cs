@@ -1,5 +1,6 @@
 using FirstProject_RP.DataLayer.Context;
 using FirtsProject_RP.CoreLayer.Services.Users;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -13,6 +14,18 @@ builder.Services.AddDbContext<BlogContext>(options =>
         sqlOptions => sqlOptions.MigrationsAssembly("FirstProject-RP.DataLayer")));
 
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    option.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(option =>
+{
+    option.LoginPath = "/auth/login";
+    option.LogoutPath = "/Auth/Logout";
+    option.ExpireTimeSpan = TimeSpan.FromDays(30);
+});
 
 
 var app = builder.Build();
@@ -34,6 +47,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

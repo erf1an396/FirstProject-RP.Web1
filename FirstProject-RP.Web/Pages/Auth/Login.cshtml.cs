@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using CodeYad_Blog.CoreLayer.Utilities;
 using FirtsProject_RP.CoreLayer.DTOs.Users;
 using FirtsProject_RP.CoreLayer.Services.Users;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client;
@@ -36,18 +39,29 @@ namespace FirstProject_RP.Web.Pages.Auth
             if (ModelState.IsValid == false)
                 return Page();
 
-            var result = _userService.LoginUser(new UserLoginDto()
+            var User = _userService.LoginUser(new UserLoginDto()
             {
                 UserName = UserName,
                 Password = Password
 
             });
 
-            if (result.Status == OperationResultStatus.NotFound)
+            if (User == null)
             {
                 ModelState.AddModelError("UserName", "اطلاعات یافت نشد");
                 return Page();
             }
+
+            List<Claim> claims = new List<Claim>() {
+                new Claim("Test","Test"),
+                new Claim(ClaimTypes.NameIdentifier , User.Id.ToString()),
+                new Claim(ClaimTypes.Name , User.UserName)
+
+            };
+
+            var Identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var ClaimPrinciple = new ClaimsPrincipal(Identity);
+            HttpContext.SignInAsync(ClaimPrinciple);
             return RedirectToPage("../Index");
         }
     }

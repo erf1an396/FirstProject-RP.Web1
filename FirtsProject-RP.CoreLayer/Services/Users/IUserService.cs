@@ -7,6 +7,8 @@ namespace FirtsProject_RP.CoreLayer.Services.Users;
 public interface IUserService
 {
     OperationResult RegisterUser (UserRegisterDto userRegister);
-    OperationResult LoginUser(UserLoginDto userLogin);
+    UserDto LoginUser(UserLoginDto userLogin);
+
+
     //Task<OperationResult> LoginUser1(UserLoginDto userLoginDto);
 }

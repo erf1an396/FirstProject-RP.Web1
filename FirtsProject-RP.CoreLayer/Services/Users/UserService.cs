@@ -49,15 +49,30 @@ namespace FirtsProject_RP.CoreLayer.Services.Users
             return OperationResult.Success();
         }
 
-        public OperationResult LoginUser(UserLoginDto userLoginDto)
+        public UserDto LoginUser(UserLoginDto userLoginDto)
         {
             var PasswordHash = userLoginDto.Password.EncodeToMd5();
-            var isUserExist = _blogContext.Users.Any(u => u.UserName == userLoginDto.UserName && u.Password == PasswordHash);
-            if (!isUserExist)
-                return OperationResult.NotFound();
+            var User = _blogContext.Users.FirstOrDefault(u => u.UserName == userLoginDto.UserName && u.Password == PasswordHash);
 
-            return OperationResult.Success();
+            if(User == null)
+                return null;
+
+            var UserDto = new UserDto()
+            {
+                FullName = User.FullName,
+                UserName = User.UserName,
+                Password = User.Password,
+                Role = User.Role, 
+                CreationDate = User.CreationDate,
+                Id = User.Id 
+            };
+            return UserDto;
+
+            
         }
+
+
+
         //public async Task<OperationResult> LoginUser1(UserLoginDto userLoginDto)
         //{
         //    var PasswordHash = userLoginDto.Password.EncodeToMd5();
