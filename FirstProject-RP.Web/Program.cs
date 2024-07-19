@@ -11,6 +11,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<BlogContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"),
         sqlOptions => sqlOptions.MigrationsAssembly("FirstProject-RP.DataLayer")));
+
 builder.Services.AddScoped<IUserService, UserService>();
 
 

@@ -8,6 +8,7 @@ using CodeYad_Blog.CoreLayer.Utilities;
 using FirstProject_RP.DataLayer.Context;
 using FirstProject_RP.DataLayer.Entities;
 using FirtsProject_RP.CoreLayer.DTOs.Users;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
 namespace FirtsProject_RP.CoreLayer.Services.Users
@@ -51,11 +52,20 @@ namespace FirtsProject_RP.CoreLayer.Services.Users
         public OperationResult LoginUser(UserLoginDto userLoginDto)
         {
             var PasswordHash = userLoginDto.Password.EncodeToMd5();
-            var isUserExist =  _blogContext.Users.Any(u =>u.UserName == userLoginDto.UserName && u.Password == PasswordHash);
+            var isUserExist = _blogContext.Users.Any(u => u.UserName == userLoginDto.UserName && u.Password == PasswordHash);
             if (!isUserExist)
                 return OperationResult.NotFound();
 
             return OperationResult.Success();
         }
+        //public async Task<OperationResult> LoginUser1(UserLoginDto userLoginDto)
+        //{
+        //    var PasswordHash = userLoginDto.Password.EncodeToMd5();
+        //    var isUserExist = await _blogContext.Users.AnyAsync(u => u.UserName == userLoginDto.UserName && u.Password == PasswordHash);
+        //    if (!isUserExist)
+        //        return OperationResult.NotFound();
+
+        //    return OperationResult.Success();
+        //}
     }
 }

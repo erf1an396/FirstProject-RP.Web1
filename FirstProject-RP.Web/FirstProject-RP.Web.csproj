@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <None Include="Pages\Shared\Headers\_MainHeader.cshtml" />
+    <None Include="wwwroot\css\style.css.map" />
     <None Include="wwwroot\fonts\IRANSans\woff2\IRANSansWeb.woff2" />
     <None Include="wwwroot\fonts\IRANSans\woff2\IRANSansWeb_Black.woff2" />
     <None Include="wwwroot\fonts\IRANSans\woff2\IRANSansWeb_Bold.woff2" />
@@ -37,6 +38,19 @@
     <None Include="wwwroot\fonts\IRANSans\woff2\IRANSansWeb_UltraLight.woff2" />
     <None Include="wwwroot\fonts\ui-icons.svg" />
     <None Include="wwwroot\fonts\ui-icons.woff2" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\easing.min.js" />
+    <None Include="wwwroot\js\flickity.pkgd.min.js" />
+    <None Include="wwwroot\js\gmap3.min.js" />
+    <None Include="wwwroot\js\jquery.appear.min.js" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\js\jquery.newsTicker.min.js" />
+    <None Include="wwwroot\js\jquery.sticky-kit.min.js" />
+    <None Include="wwwroot\js\lazysizes.min.js" />
+    <None Include="wwwroot\js\modernizr.min.js" />
+    <None Include="wwwroot\js\owl-carousel.min.js" />
+    <None Include="wwwroot\js\scripts.js" />
+    <None Include="wwwroot\js\twitterFetcher_min.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />

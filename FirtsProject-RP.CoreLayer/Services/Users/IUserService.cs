@@ -8,4 +8,5 @@ public interface IUserService
 {
     OperationResult RegisterUser (UserRegisterDto userRegister);
     OperationResult LoginUser(UserLoginDto userLogin);
+    //Task<OperationResult> LoginUser1(UserLoginDto userLoginDto);
 }
