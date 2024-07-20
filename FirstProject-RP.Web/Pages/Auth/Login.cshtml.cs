@@ -61,7 +61,11 @@ namespace FirstProject_RP.Web.Pages.Auth
 
             var Identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var ClaimPrinciple = new ClaimsPrincipal(Identity);
-            HttpContext.SignInAsync(ClaimPrinciple);
+            var Properties = new AuthenticationProperties()
+            {
+                IsPersistent = true,
+            };
+            HttpContext.SignInAsync(ClaimPrinciple, Properties);
             return RedirectToPage("../Index");
         }
     }

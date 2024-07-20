@@ -3,11 +3,11 @@
     font-family: IRANSans;
     font-style: normal;
     font-weight: 900;
-    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Black.eot');
-    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Black.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    url('../../fonts/IRANSans/woff2/IRANSansWeb_Black.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-    url('../../fonts/IRANSans/woff/IRANSansWeb_Black.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-    url('../../fonts/IRANSans/ttf/IRANSansWeb_Black.ttf') format('truetype');
+    src: url('admin/fonts/IRANSans/eot/IRANSansWeb_Black.eot');
+    src: url('admin/fonts/IRANSans/eot/IRANSansWeb_Black.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('admin/fonts/IRANSans/woff2/IRANSansWeb_Black.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('admin/fonts/IRANSans/woff/IRANSansWeb_Black.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('admin/fonts/IRANSans/ttf/IRANSansWeb_Black.ttf') format('truetype');
 }
 html,
 body,

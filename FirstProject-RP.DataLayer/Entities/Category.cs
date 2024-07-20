@@ -19,6 +19,8 @@ namespace FirstProject_RP.DataLayer.Entities
 
         public string MetaDescription { get; set; }
 
+        public int? ParentId { get; set; }
+
         #region Relations
         public ICollection<Post> Posts { get; set; }
 

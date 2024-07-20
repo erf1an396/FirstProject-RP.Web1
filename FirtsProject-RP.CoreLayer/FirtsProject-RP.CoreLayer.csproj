@@ -11,4 +11,9 @@
     <ProjectReference Include="..\FirstProject-RP.DataLayer\FirstProject-RP.DataLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\Categories\" />
+    <Folder Include="Mappers\" />
+  </ItemGroup>
+
 </Project>

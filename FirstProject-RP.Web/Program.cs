@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BlogContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"),
@@ -50,7 +51,21 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+
+
+
+app.MapControllerRoute(
+    name: "Default",
+    pattern: "{area=exists}/{controller=Home}/{action=Index}/{id?}");
+
+//app.MapAreaControllerRoute(
+//    name: "AdminPanel",
+//    areaName: "Admin",
+//    pattern: "erfan/{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
+
+
 
 
 app.Run();

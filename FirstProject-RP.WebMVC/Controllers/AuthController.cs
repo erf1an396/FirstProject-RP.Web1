@@ -26,7 +26,7 @@ namespace FirstProject_RP.WebMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public IActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid == false)
                 return View(model);
@@ -55,11 +55,11 @@ namespace FirstProject_RP.WebMVC.Controllers
                 Password = model.Password
             });
 
-            if (result.Status == OperationResultStatus.NotFound)
-            {
-                ModelState.AddModelError("UserName", "اطلاعات یافت نشد");
-                return View(model);
-            }
+            //if (result.status == OperationResultStatus.NotFound)
+            //{
+            //    ModelState.AddModelError("UserName", "اطلاعات یافت نشد");
+            //    return View(model);
+            //}
             return RedirectToAction("Index", "Home");
         }
 

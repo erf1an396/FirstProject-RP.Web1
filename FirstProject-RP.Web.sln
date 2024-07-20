@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject-RP.DataLayer",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirtsProject-RP.CoreLayer", "FirtsProject-RP.CoreLayer\FirtsProject-RP.CoreLayer.csproj", "{F2D937D4-D7E6-4F2F-808D-411679DBB252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstProject-RP.WebMVC", "FirstProject-RP.WebMVC\FirstProject-RP.WebMVC.csproj", "{EBDA5108-93CC-45C2-BBB7-893EA9C357E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject-RP.WebMVC", "FirstProject-RP.WebMVC\FirstProject-RP.WebMVC.csproj", "{EBDA5108-93CC-45C2-BBB7-893EA9C357E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
