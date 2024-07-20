@@ -1,4 +1,5 @@
 using FirstProject_RP.DataLayer.Context;
+using FirtsProject_RP.CoreLayer.Services.Categories;
 using FirtsProject_RP.CoreLayer.Services.Users;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,9 @@ builder.Services.AddDbContext<BlogContext>(options =>
         sqlOptions => sqlOptions.MigrationsAssembly("FirstProject-RP.DataLayer")));
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+
 
 builder.Services.AddAuthentication(option =>
 {
