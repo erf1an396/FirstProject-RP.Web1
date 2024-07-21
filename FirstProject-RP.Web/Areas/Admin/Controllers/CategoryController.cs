@@ -18,5 +18,10 @@ namespace FirstProject_RP.Web.Areas.Admin.Controllers
         {
             return View(_categoryService.GetAllCategory());
         }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
     }
 }
