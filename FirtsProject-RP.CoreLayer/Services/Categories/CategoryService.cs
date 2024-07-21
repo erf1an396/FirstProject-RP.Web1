@@ -18,11 +18,15 @@ public class CategoryService : ICategoryService
    
     public OperationResult CreateCategory(CreateCategoryDto command)
     {
+
+        if(IsSlugExist(command.Slug))
+            return OperationResult.Error("Slug Is Exist");
+
         var Category = new Category()
         {
             Title = command.Title,
             IsDeleted = false,
-            Slug = command.Slug,
+            Slug = command.Slug.ToSlug(),
             MetaDescription = command.MetaDescription,
             MetaTag = command.MetaTag
         };
@@ -35,11 +39,15 @@ public class CategoryService : ICategoryService
      {
          var category = _blogContext.Categories.FirstOrDefault(c => c.Id == command.Id);
 
-         if (category == null)
-             return OperationResult.NotFound();
+        if (category == null)
+            return OperationResult.NotFound();
 
-         category.Title = command.Title;
-         category.Slug = command.Slug;
+        if (command.Slug.ToSlug() != category.Slug)
+            if (IsSlugExist(command.Slug))
+                return OperationResult.Error("Slug Is Exist");
+
+        category.Title = command.Title;
+         category.Slug = command.Slug.ToSlug();
          category.MetaDescription = command.MetaDescription;
          category.MetaTag = command.MetaTag;
 
@@ -69,4 +77,11 @@ public class CategoryService : ICategoryService
             return null;
         return CategoryMapper.Map(category);
     }
+
+     public bool IsSlugExist(string slug)
+     {
+         return _blogContext.Categories.Any(c => c.Slug == slug.ToSlug());
+     }
+
+     
 }

@@ -16,5 +16,7 @@ public interface ICategoryService
 
     CategoryDto GetCategoryBy(string slug);
 
+    bool IsSlugExist (string slug);
+
 
 }

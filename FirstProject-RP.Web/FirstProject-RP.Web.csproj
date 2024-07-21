@@ -7808,10 +7808,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="wwwroot\admin\bower_components\moment\moment.d.ts" />
   </ItemGroup>
 

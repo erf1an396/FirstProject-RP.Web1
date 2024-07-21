@@ -1,6 +1,7 @@
-﻿@model FirstProject_RP.Web.Areas.Admin.Models.Categories.CreateCategoryViewModel
+﻿@model FirstProject_RP.Web.Areas.Admin.Models.Categories.EditCategoryViewModel
+
 @{
-    ViewData["title"] = "افزودن دسته بندی";
+    ViewData["title"] = "ویرایش دسته بندی";
     ViewData["selected"] = "category";
 
 }
@@ -15,11 +16,10 @@
     </ol>
 </section>
 <section class="content">
-    <form class="box box-danger" method="post" asp-area="Admin" asp-controller="Category" asp-action="Add">
-        <input type="hidden" asp-for="ParentId" />
+    <form class="box box-danger" method="post" asp-area="Admin" asp-controller="Category" asp-action="Edit">
         <div class="box-body row">
             <div class="col-md-6">
-               @Html.EditorFor(m => m.Title)
+                @Html.EditorFor(m => m.Title)
             </div>
             <div class="col-md-6">
                 @Html.EditorFor(m => m.Slug)
