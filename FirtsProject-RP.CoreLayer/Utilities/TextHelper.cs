@@ -1,4 +1,4 @@
-﻿namespace CodeYad_Blog.CoreLayer.Utilities
+﻿namespace FirstProject_RP.CoreLayer.Utilities
 {
     public static class TextHelper
     {

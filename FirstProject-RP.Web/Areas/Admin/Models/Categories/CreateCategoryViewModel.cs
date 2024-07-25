@@ -1,10 +1,11 @@
-﻿using FirtsProject_RP.CoreLayer.DTOs.Categories;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using FirtsProject_RP.CoreLayer.DTOs.Categories;
 
 namespace FirstProject_RP.Web.Areas.Admin.Models.Categories
 {
     public class CreateCategoryViewModel
     {
+
         [Display(Name = " عنوان")]
         [Required(ErrorMessage = "وارد کردن {0} اجباری است")]
         public string Title { get; set; }

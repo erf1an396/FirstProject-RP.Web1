@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using CodeYad_Blog.CoreLayer.Utilities;
+using FirstProject_RP.CoreLayer.Utilities;
 using FirtsProject_RP.CoreLayer.DTOs.Users;
 using FirtsProject_RP.CoreLayer.Services.Users;
 using Microsoft.AspNetCore.Mvc;

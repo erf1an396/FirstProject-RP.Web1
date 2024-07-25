@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
-using CodeYad_Blog.CoreLayer.Utilities;
+using FirstProject_RP.CoreLayer.Utilities;
 using FirtsProject_RP.CoreLayer.DTOs.Users;
 using FirtsProject_RP.CoreLayer.Services.Users;
 using Microsoft.AspNetCore.Authentication;

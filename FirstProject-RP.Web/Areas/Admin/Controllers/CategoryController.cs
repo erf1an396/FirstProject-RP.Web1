@@ -1,9 +1,14 @@
-﻿using CodeYad_Blog.CoreLayer.Utilities;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using FirtsProject_RP.CoreLayer.DTOs.Categories;
+using FirtsProject_RP.CoreLayer.Services.Categories;
+using FirstProject_RP.CoreLayer.Utilities;
 using FirstProject_RP.Web.Areas.Admin.Models.Categories;
 using FirtsProject_RP.CoreLayer.DTOs.Categories;
 using FirtsProject_RP.CoreLayer.Services.Categories;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
 namespace FirstProject_RP.Web.Areas.Admin.Controllers
 {
@@ -16,35 +21,29 @@ namespace FirstProject_RP.Web.Areas.Admin.Controllers
         {
             _categoryService = categoryService;
         }
-
-
         public IActionResult Index()
         {
             return View(_categoryService.GetAllCategory());
         }
 
-        public IActionResult Add()
+        [Route("/admin/category/add/{parentId?}")]
+        public IActionResult Add(int? parentId)
         {
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Add(CreateCategoryViewModel createCategoryViewModel)
+        [HttpPost("/admin/category/add/{parentId?}")]
+        public IActionResult Add(int? parentId,CreateCategoryViewModel createViewModel)
         {
-
-            var result = _categoryService.CreateCategory(createCategoryViewModel.MapToDto());
+            createViewModel.ParentId = parentId;
+            var result = _categoryService.CreateCategory(createViewModel.MapToDto());
             if (result.Status != OperationResultStatus.Success)
             {
-                ModelState.AddModelError(nameof(createCategoryViewModel.Slug), result.Message);
+                ModelState.AddModelError(nameof(createViewModel.Slug), result.Message);
                 return View();
             }
             return RedirectToAction("Index");
-
-
-
         }
-
 
         public IActionResult Edit(int id)
         {
@@ -54,16 +53,13 @@ namespace FirstProject_RP.Web.Areas.Admin.Controllers
 
             var model = new EditCategoryViewModel()
             {
-                MetaDescription = category.MetaDescription,
                 Slug = category.Slug,
                 MetaTag = category.MetaTag,
-                Title = category.Title,
-                
+                MetaDescription = category.MetaDescription,
+                Title = category.Title
             };
-
             return View(model);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, EditCategoryViewModel editModel)
@@ -71,18 +67,24 @@ namespace FirstProject_RP.Web.Areas.Admin.Controllers
             var result = _categoryService.EditCategory(new EditCategoryDto()
             {
                 Slug = editModel.Slug,
-                MetaDescription = editModel.MetaDescription,
                 MetaTag = editModel.MetaTag,
-                Title = editModel.Title,    
+                MetaDescription = editModel.MetaDescription,
+                Title = editModel.Title,
                 Id = id
-
             });
             if (result.Status != OperationResultStatus.Success)
             {
-                ModelState.AddModelError(nameof(editModel.Slug),result.Message);
+                ModelState.AddModelError(nameof(editModel.Slug), result.Message);
                 return View();
             }
             return RedirectToAction("Index");
+        }
+
+        public IActionResult GetChildCategories(int parentId)
+        {
+            var categoy = _categoryService.GetChildCategories(parentId);
+
+            return new JsonResult(categoy);
         }
     }
 }

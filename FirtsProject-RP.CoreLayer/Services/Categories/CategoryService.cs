@@ -1,4 +1,4 @@
-﻿using CodeYad_Blog.CoreLayer.Utilities;
+﻿using FirstProject_RP.CoreLayer.Utilities;
 using FirstProject_RP.DataLayer.Context;
 using FirstProject_RP.DataLayer.Entities;
 using FirtsProject_RP.CoreLayer.DTOs.Categories;
@@ -78,7 +78,12 @@ public class CategoryService : ICategoryService
         return CategoryMapper.Map(category);
     }
 
-     public bool IsSlugExist(string slug)
+    public List<CategoryDto> GetChildCategories(int parentId)
+    {
+        return _blogContext.Categories.Where(r => r.ParentId == parentId).Select(category => CategoryMapper.Map(category)).ToList();
+    }
+
+    public bool IsSlugExist(string slug)
      {
          return _blogContext.Categories.Any(c => c.Slug == slug.ToSlug());
      }

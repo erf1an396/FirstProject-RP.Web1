@@ -50,8 +50,8 @@
                                 </ul>
                             </td>
                             <td>
-                                <a href="~/Admin/Category/Edit/@item.Id" class="btn btn-info btn-sm">ویرایش</a>
-                                <a href="~/admin/Category/Add/@item.ParentId" class="btn btn-success btn-sm">افزودن زیرگروه</a>
+                                <a asp-area="admin" asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">ویرایش</a>
+                                <a asp-area="admin" asp-controller="Category" asp-action="Add" asp-route-parentId="@item.Id" class="btn btn-success btn-sm">افزودن زیرگروه</a>
                             </td>
                         </tr>
 

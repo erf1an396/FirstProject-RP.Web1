@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace FirstProject_RP.Web.Areas.Admin.Controllers
+namespace CodeYad_Blog.Web.Areas.Admin.Controllers
 {
+    [Area("admin")]
     public class HomeController : Controller
     {
-        [Area("Admin")]
         public IActionResult Index()
         {
             return View();

@@ -78,13 +78,20 @@ namespace FirstProject_RP.DataLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Slug")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<int?>("SubCategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -94,13 +101,14 @@ namespace FirstProject_RP.DataLayer.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Visit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Visit")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("SubCategoryId");
 
                     b.HasIndex("UserId");
 
@@ -182,6 +190,11 @@ namespace FirstProject_RP.DataLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("FirstProject_RP.DataLayer.Entities.Category", "SubCategory")
+                        .WithMany("SubPosts")
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("FirstProject_RP.DataLayer.Entities.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
@@ -190,13 +203,15 @@ namespace FirstProject_RP.DataLayer.Migrations
 
                     b.Navigation("Category");
 
+                    b.Navigation("SubCategory");
+
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("FirstProject_RP.DataLayer.Entities.PostComment", b =>
                 {
                     b.HasOne("FirstProject_RP.DataLayer.Entities.Post", "Post")
-                        .WithMany()
+                        .WithMany("PostComments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -215,6 +230,13 @@ namespace FirstProject_RP.DataLayer.Migrations
             modelBuilder.Entity("FirstProject_RP.DataLayer.Entities.Category", b =>
                 {
                     b.Navigation("Posts");
+
+                    b.Navigation("SubPosts");
+                });
+
+            modelBuilder.Entity("FirstProject_RP.DataLayer.Entities.Post", b =>
+                {
+                    b.Navigation("PostComments");
                 });
 
             modelBuilder.Entity("FirstProject_RP.DataLayer.Entities.User", b =>
