@@ -26,7 +26,7 @@ namespace FirstProject_RP.CoreLayer.Services.Posts
         {
             if (command.ImageFile == null)
                 return OperationResult.Error();
-            var post = PostMapper.MapCreateDtoToPost(command);
+            DataLayer.Entities.Post post = PostMapper.MapCreateDtoToPost(command);
 
             if (IsSlugExist(post.Slug))
                 return OperationResult.Error("Slug تکراری است");

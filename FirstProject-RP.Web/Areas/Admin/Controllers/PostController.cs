@@ -6,6 +6,7 @@ using FirstProject_RP.Web.Areas.Admin.Models.Posts;
 using FirtsProject_RP.CoreLayer.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FirtsProject_RP.Web.Areas.Admin.Controllers
 {
@@ -22,6 +23,7 @@ namespace FirtsProject_RP.Web.Areas.Admin.Controllers
 
         public IActionResult Index(int pageId = 1, string title = "", string categorySlug = "")
         {
+
             var param = new PostFilterParams()
             {
                 CategorySlug = categorySlug,

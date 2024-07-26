@@ -28,7 +28,8 @@ public class CategoryService : ICategoryService
             IsDeleted = false,
             Slug = command.Slug.ToSlug(),
             MetaDescription = command.MetaDescription,
-            MetaTag = command.MetaTag
+            MetaTag = command.MetaTag,
+            ParentId = command.ParentId,
         };
         _blogContext.Categories.Add(Category);
         _blogContext.SaveChanges();

@@ -15,7 +15,7 @@ namespace FirstProject_RP.CoreLayer.Mappers
                 CategoryId = dto.CategoryId,
                 Slug = dto.Slug.ToSlug(),
                 Title = dto.Title,
-                UserId = dto.UserId = 1,
+                UserId = dto.UserId,
                 Visit = 0,
                 IsDeleted = false,
                 SubCategoryId=dto.SubCategoryId
